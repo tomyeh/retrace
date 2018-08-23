@@ -1,6 +1,8 @@
 retrace
 =======
 
+> A temporary fork of [retrace](https://github.com/bjornm/retrace) for Dart 2
+
 A command line utility to regenerate stack traces for minified Dart applications compiled with dart2js.
 
 Installation

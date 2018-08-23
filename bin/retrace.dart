@@ -29,9 +29,10 @@ main(List<String> args) {
 
   try {
     var retracer = new Retracer(argResults.rest.single);
-    if(stdioType(stdin) == StdioType.TERMINAL && format == 'text')
+    if(stdin.hasTerminal && format == 'text')
       print("Paste your minified trace here:");
-    var lines = [];
+
+    var lines = <String>[];
     while(true) {
       var line = stdin.readLineSync();
       if (line == null || line.isEmpty) {
