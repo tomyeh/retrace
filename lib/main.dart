@@ -25,7 +25,7 @@ main(List<String> args) {
     print(parser.usage);
     exit(1);
   }
-  String format = argResults['format'];
+  var format = argResults['format'];
 
   try {
     var retracer = new Retracer(argResults.rest.single);
