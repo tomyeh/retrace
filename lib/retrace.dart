@@ -6,7 +6,7 @@ import 'package:source_maps/source_maps.dart';
 import 'package:path/path.dart' as p;
 
 class Retracer {
-  Mapping _mapping;
+  late Mapping _mapping;
 
   Retracer(String filename) {
     try {
@@ -37,21 +37,17 @@ class Retracer {
       }
 
       var source = p.prettyUri(span.sourceUrl);
-      if (source != null) {
-        var parts = source.split("/");
-        if (parts.length > 3) {
-          parts = parts.sublist(parts.length - 3);
-        }
-        source = parts.join("/");
-      } else {
-        source = "";
+      var parts = source.split("/");
+      if (parts.length > 3) {
+        parts = parts.sublist(parts.length - 3);
       }
+      source = parts.join("/");
       output.add(new RetracedLine(source, text, span.start.line + 1, span.start.column + 1));
     };
     return output;
   }
 
-  static LineCol parseLine(String text) {
+  static LineCol? parseLine(String text) {
     var match;
     if (new RegExp("\\s*at ").hasMatch(text)) {
       // chrome syntax
@@ -81,7 +77,7 @@ class LineCol {
     if (!(other is LineCol)) {
       return false;
     }
-    var o = (other as LineCol);
+    var o = other;
     return o.line == line && o.col == col;
   }
   int get hashCode => line + col;
@@ -89,10 +85,10 @@ class LineCol {
 }
 
 class RetracedLine {
-  final String source;
+  final String? source;
   final String raw;
-  final int line;
-  final int col;
+  final int? line;
+  final int? col;
   final bool parsed;
   final bool located;
 
