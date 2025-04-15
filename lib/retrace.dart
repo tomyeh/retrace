@@ -104,7 +104,7 @@ class RetracedLine {
 
 class TextFormatter {
   final bool useColors;
-  TextFormatter({this.useColors: false});
+  TextFormatter({this.useColors = false});
 
   String format(List<RetracedLine> trace){
     var output = new StringBuffer();

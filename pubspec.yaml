@@ -1,5 +1,5 @@
 name: retrace
-version: 1.2.0
+version: 1.5.0
 description: Regenerates minified stacktraces.
 homepage: https://github.com/bjornm/retrace
 dependencies:
@@ -11,4 +11,4 @@ dev_dependencies:
 executables:
   retrace:
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
